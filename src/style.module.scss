@@ -1,0 +1,74 @@
+.dialog {
+	position: relative;
+	z-index: 999;
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	border: 0;
+	background-color: transparent;
+	transform: translateY(-10px);
+	transition: transform 0.3s;
+	overflow-x: hidden;
+
+	.menu-container {
+		display: flex;
+
+		.menu {
+			display: inherit;
+			flex-direction: column;
+			background-color: #CCCCCC;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			background-color: var(--color-clear);
+			white-space: nowrap;
+			border-radius: 2px;
+			overflow: hidden;
+			transform: translate(1px);
+
+			.item {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				padding: 10px;
+				border: 1px solid var(--color-neutral);
+				border-left: 0;
+				border-right: 0;
+				color: var(--color-primary);
+				font-size: 20px;
+				cursor: pointer;
+				opacity: 1;
+				transition: opacity 0.1s, background-color 0.1s, color 0.1s;
+
+				&:not(.disabled):hover, &:not(.disabled).active {
+					opacity: 0.9;
+					background-color: #04103099;
+					color: var(--color-neutral);
+				}
+
+				&:first-child {
+					border-top: 0;
+				}
+
+				&:last-child {
+					border-bottom: 0;
+				}
+
+				&.disabled {
+					color: var(--color-natural);
+					cursor: unset;
+				}
+			}
+		}
+	}
+
+	&[open] {
+		display: block;
+		position: absolute;
+		transform: translateY(0);
+	}
+
+	&::backdrop {
+		background-color: transparent;
+	}
+}
